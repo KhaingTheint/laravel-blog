@@ -13,8 +13,9 @@ WORKDIR /app
 
 COPY . .
 
-RUN composer install --no-dev --optimize-autoloader
+RUN cp production.env .env && composer install --no-dev --optimize-autoloader
 
 EXPOSE 8080
 
 CMD php artisan serve --host=0.0.0.0 --port=$PORT
+
